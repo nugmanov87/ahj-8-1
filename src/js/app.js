@@ -34,27 +34,25 @@ class Widget {
     <p class="item-msg">${msg}</p>
     </div>
     `;
-    console.log(this.widgetList);
     this.widgetList.appendChild(this.itemMesage);
   }
 
   events() {
-    // http://localhost:7070/sse
     const eventSource = new EventSource(this.url);
 
-    eventSource.addEventListener('open', (evt) => {
-      console.log(evt);
+    eventSource.addEventListener('open', (e) => {
+      console.log(e);
       console.log('connected');
     });
 
-    eventSource.addEventListener('error', (evt) => {
-      console.log(evt);
+    eventSource.addEventListener('error', (e) => {
+      console.log(e);
       console.log('error');
     });
 
-    eventSource.addEventListener('comment', (evt) => {
-      this.addMsg(evt.data);
-      console.log(evt.data);
+    eventSource.addEventListener('comment', (e) => {
+      this.addMsg(e.data);
+      console.log(e.data);
     });
   }
 
